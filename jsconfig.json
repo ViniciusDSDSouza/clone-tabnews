@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+
+    // Define a url base para importação de arquivos como a raiz (root)
     "baseUrl": "."
   }
 }

@@ -1,7 +1,18 @@
+# Define os Serviços que serão executados pelo docker compose
 services:
+
+  # Define o serviço 'database' que contém o banco de dados
   database:
+
+    # Define o banco de dados e a versão utilizada
     image: "postgres:16.0-alpine3.18"
+
+    # Define as variáveis de ambiente em um arquivo externo
     env_file:
       - ../.env.development
+
+    # Define a porta padrão usada pelo banco de dados
     ports:
+      # Formato
+      # porta_local: porta_container
       - "5432:5432"
