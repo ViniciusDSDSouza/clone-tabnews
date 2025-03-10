@@ -8,7 +8,10 @@ test("Get to /api/v1/status", async () => {
 
   const max_connections = Number(responseBody.max_connections);
 
+  const used_connections = Number(responseBody.used_connections);
+
   expect(responseBody.updated_at).toEqual(parsedUpdatedAt);
   expect(responseBody.postgres_version).toContain("PostgreSQL");
   expect(max_connections).toBeGreaterThan(0);
+  expect(used_connections).toBeGreaterThan(0);
 });

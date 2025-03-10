@@ -11,14 +11,15 @@ async function status(request, response) {
   const max_connections = resultMaxConnections.rows[0].max_connections;
 
   const resultUsedConnections = await database.query(
-    "SELECT * FROM pg_stat_activity WHERE state = 'activate'",
+    "SELECT COUNT (*) FROM pg_stat_activity WHERE state = 'active'",
   );
+  const used_connections = resultUsedConnections.rows[0].count;
 
   response.status(200).json({
     updated_at: updated_at,
     postgres_version: postgres_version,
     max_connections: max_connections,
-    result_used_connections: resultUsedConnections,
+    used_connections: used_connections,
   });
 }
 
